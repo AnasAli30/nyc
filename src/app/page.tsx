@@ -8,6 +8,7 @@ import {
   BarChart3,
   CheckCircle,
 } from "lucide-react";
+// import "@/app/globals.css";
 
 import { Button } from "@/components/ui/button";
 import {

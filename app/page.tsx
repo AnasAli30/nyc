@@ -1,4 +1,4 @@
-import App from '@/components/pages/app'
+import App from '@/app/page'
 import { APP_URL } from '../lib/constants'
 import type { Metadata } from 'next'
 
@@ -19,9 +19,9 @@ const frame = {
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: 'Monad Farcaster MiniApp Template',
+    title: 'notyourtype',
     openGraph: {
-      title: 'Monad Farcaster MiniApp Template',
+      title: 'notyourtype',
       description: 'A template for building mini-apps on Farcaster and Monad',
     },
     other: {

@@ -1,14 +1,24 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-
-import { Providers } from '@/components/providers'
+import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
+import { ThemeProvider } from '@/components/ui/theme-provider'
+import { ThirdwebProvider } from 'thirdweb/react'
+import { Appbar } from '@/components/Appbar'
+import { Toaster } from '@/components/ui/sonner'
+import { Providers } from '@/components/providers'
+const geistSans = Geist({
+  variable: '--font-geist-sans',
+  subsets: ['latin'],
+})
 
-const inter = Inter({ subsets: ['latin'] })
+const geistMono = Geist_Mono({
+  variable: '--font-geist-mono',
+  subsets: ['latin'],
+})
 
 export const metadata: Metadata = {
-  title: 'Monad Farcaster MiniApp Template',
-  description: 'A template for building mini-apps on Farcaster and Monad',
+  title: 'Not your type ',
+  description: 'Getting rewarded for being yourself',
 }
 
 export default function RootLayout({
@@ -18,8 +28,25 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <Providers>{children}</Providers>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        <Providers>
+        <ThirdwebProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <div>
+              <Appbar />
+              {children}
+              <Toaster />
+            </div>
+          </ThemeProvider>
+        </ThirdwebProvider>
+        </Providers>
       </body>
     </html>
   )
